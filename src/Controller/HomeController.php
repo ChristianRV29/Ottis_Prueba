@@ -34,4 +34,15 @@ class HomeController extends AbstractController
         ]);
         
     }
+
+    /**
+     *  @Route("/proyectos", name="proyectos")
+     */
+    public function proyectosAction()
+    {
+
+        return $this->render('home/proyectos.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
 }
