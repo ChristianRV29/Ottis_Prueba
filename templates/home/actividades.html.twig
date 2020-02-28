@@ -1,0 +1,24 @@
+{% extends 'base.html.twig'%}
+
+{% block titulo %}Actividades{% endblock %}
+
+{% block contenido%}
+
+    {% if actividad == 'finalizadas' %}
+    <h1>Cargamos actividades finalizadas</h1>
+
+    {% endif %}
+
+    {% if actividad == 'ejecutadas' %}
+
+    <h1>Cargamos actividades ejecutadas</h1>
+
+    {% endif %}
+
+    {% if actividad == 'inactivas' %}
+
+    <h1>Cargamos actividades inactivas</h1>
+
+    {% endif %}
+
+{% endblock %}

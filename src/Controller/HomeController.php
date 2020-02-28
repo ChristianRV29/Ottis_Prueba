@@ -29,7 +29,7 @@ class HomeController extends AbstractController
     {
         //La template index.html está encontrada en home
         
-        return $this->render('home/index.html.twig', [
+        return $this->render('home/index.html.twig', [    
             'controller_name' => 'HomeController',
         ]);
         
@@ -44,5 +44,16 @@ class HomeController extends AbstractController
         return $this->render('home/proyectos.html.twig', [
             'controller_name' => 'HomeController',
         ]);
+
+    }
+
+    /**
+     *  @Route("/actividades/{actividad}", name="actividades")
+     */
+
+    public function actividadesFunction($actividad="tipo")
+    {
+        return $this->render('home/actividades.html.twig', 
+        array("actividad"=>$actividad));
     }
 }
