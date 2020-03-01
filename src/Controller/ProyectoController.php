@@ -5,11 +5,10 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Proyecto;
+use Symfony\Component\Form;
+use App\Form\ProyectoType;
 
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/gestionProyectos")
@@ -22,33 +21,33 @@ class ProyectoController extends Controller
      * @Route("/nuevoProyecto", name="nuevoProyecto")
      */
 
-    public function nuevoProyectoAction()
+    public function nuevoProyectoAction(Request $request)
     {
-    
         $proyecto = new Proyecto();
         
-        $formBuilder = $this->createFormBuilder($proyecto);
-        $formBuilder -> add('nombre', TextType::class, array('label'=> 'Nombre del proyecto:'));
-        $formBuilder -> add('descripcion', TextareaType::class, array('label'=> 'Descripción del proyecto: '));
-        $formBuilder -> add('fecha_Inicio', DateTimeType::class , array('label'=> 'Fecha y hora de inicio:'));
+        $form = $this->createForm(ProyectoType::class, $proyecto);
 
-        $formBuilder -> add('guardar',SubmitType::class, array('label' => 'Crear proyecto'));
+        //Recogemos la información
+        $form->handleRequest($request);
 
+        //Comprobamos si la informacion es valida con isValid y si se envió información
+        if($form->isSubmitted()){
+             if($form->isValid()){
 
+                //Rellenamos el entity Proyecto
+                $proyecto = $form->getData();
 
-        $form = $formBuilder->getForm();
-       
+                //Almacenamos el proyecto
+            
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($proyecto);
+                $entityManager->flush();
 
+                return $this->redirectToRoute('proyecto',array('id'=> $proyecto->getId()));
+        }
+    }
 
-        $proyectoRepository = $this->getDoctrine()->getRepository(Proyecto::class);
-        
-        $proyectos = $proyectoRepository->findAll();
-        
-       
-        
         return $this->render('GestionProyectos/nuevoProyecto.html.twig',array('form' => $form->createView()));
-        
-    
         
     }
 
