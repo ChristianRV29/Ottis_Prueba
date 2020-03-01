@@ -19,48 +19,23 @@
     
   
       <!-- Imagen del cabecero -->
-      <img class="img-fluid rounded mb-4" src="{{asset('img/projects.jpg')}}" alt="">
-
-      <!-- Marketing Icons Section -->
+    <img class="img-fluid rounded mb-4" src="{{asset('img/projects.jpg')}}" alt="">
     <div class="row">
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <h4 class="card-header">IMAGEN DEL PROYECTO</h4>
-            <div class="card-body">
-                <h4 class="card-tittle text-center">Nombre del proyecto</h4>
-                <h5 class="card-subtittle mb-2 text-muted text-center">Director</h5>
-              <p class="card-text">Descripción del proyecto</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Learn More</a>
-            </div>
+      {% for proyecto in proyectos %}
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">{{proyecto.nombre}}</h4>
+          <div class="card-body">
+            <p class="card-text">{{proyecto.descripcion}}</p>
           </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <h4 class="card-header">Card Title</h4>
-            <div class="card-body">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Learn More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <h4 class="card-header">Card Title</h4>
-            <div class="card-body">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Learn More</a>
-            </div>
+          <div class="card-footer">
+            <a href="{{path('proyecto',{'id':proyecto.id})}}" class="btn btn-primary"> Ver detalles</a>
           </div>
         </div>
       </div>
+      {% endfor %}
+  </div>
+</div>
+ {% endblock %}
+  
 
-      </div>
-      <!-- /.row -->
-
-{% endblock %}

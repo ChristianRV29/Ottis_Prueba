@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200301052726 extends AbstractMigration
+final class Version20200301213512 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -27,7 +27,7 @@ final class Version20200301052726 extends AbstractMigration
         $this->addSql('CREATE SEQUENCE proyecto_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE TABLE actividad (id INT NOT NULL, nombre VARCHAR(50) NOT NULL, descripcion VARCHAR(200) NOT NULL, id_proyecto INT NOT NULL, id_usuario INT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE TABLE usuario (id INT NOT NULL, nombre VARCHAR(50) NOT NULL, apellido VARCHAR(50) NOT NULL, sexo VARCHAR(1) NOT NULL, correo VARCHAR(50) NOT NULL, password VARCHAR(50) NOT NULL, rol INT NOT NULL, PRIMARY KEY(id))');
-        $this->addSql('CREATE TABLE proyecto (id INT NOT NULL, nombre VARCHAR(100) NOT NULL, descripcion VARCHAR(200) NOT NULL, fecha_inicio DATE NOT NULL, fecha_finalizacion DATE DEFAULT NULL, top BOOLEAN NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE proyecto (id INT NOT NULL, nombre VARCHAR(100) NOT NULL, descripcion VARCHAR(200) NOT NULL, fecha_inicio DATE NOT NULL, fecha_finalizacion DATE DEFAULT NULL, top BOOLEAN NOT NULL, imagen VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
     }
 
     public function down(Schema $schema) : void

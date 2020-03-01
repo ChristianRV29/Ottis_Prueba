@@ -52,10 +52,12 @@ class HomeController extends Controller
     public function proyectosAction()
     {
 
-        return $this->render('home/proyectos.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
+        $proyectoRepository = $this->getDoctrine()->getRepository(Proyecto::class);
+        $proyectos = $proyectoRepository->findAll();
 
+        return $this->render('home/proyectos.html.twig', 
+        array('proyectos'=>$proyectos));
+    
     }
 
     /**

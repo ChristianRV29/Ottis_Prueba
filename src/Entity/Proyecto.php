@@ -41,6 +41,10 @@ class Proyecto
      */
     private $top;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $imagen;
 
     public function getId(): ?int
     {
@@ -75,8 +79,6 @@ class Proyecto
     public function getFechaInicio(): ?\DateTimeInterface
     {
         
-
-       
         return $this->fecha_Inicio;
     }
 
@@ -88,14 +90,15 @@ class Proyecto
         return $this;
     }
 
-
-    public function getFechaFinalizacion(): ?\DateTimeInferface
+    public function getFechaFinalizacion(): ?\DateTimeInterface
     {
+        
         return $this->fecha_Finalizacion;
     }
 
-    public function setFechaFinalizacion(?\DateTimeInterface $fecha_Finalizacion): self
+    public function setFechaFinalizacion(\DateTimeInterface $fecha_Inicio): self
     {
+        
         $this->fecha_Finalizacion = $fecha_Finalizacion;
 
         return $this;
@@ -109,6 +112,18 @@ class Proyecto
     public function setTop(bool $top): self
     {
         $this->top = $top;
+
+        return $this;
+    }
+
+    public function getImagen(): ?string
+    {
+        return $this->imagen;
+    }
+
+    public function setImagen(string $imagen): self
+    {
+        $this->imagen = $imagen;
 
         return $this;
     }

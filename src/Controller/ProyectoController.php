@@ -8,6 +8,9 @@ use App\Entity\Proyecto;
 use Symfony\Component\Form;
 use App\Form\ProyectoType;
 
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+
+
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -36,7 +39,10 @@ class ProyectoController extends Controller
 
                 //Rellenamos el entity Proyecto
                 $proyecto = $form->getData();
-
+                
+                $proyecto->setTop(false);
+                $proyecto->setImagen("");
+                //$proyecto->setFechaFinalizacion(null);
                 //Almacenamos el proyecto
             
                 $entityManager = $this->getDoctrine()->getManager();
