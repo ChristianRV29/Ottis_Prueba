@@ -70,19 +70,25 @@ class Proyecto
         return $this;
     }
 
+   
     public function getFechaInicio(): ?\DateTimeInterface
     {
+        
+
+       
         return $this->fecha_Inicio;
     }
 
     public function setFechaInicio(\DateTimeInterface $fecha_Inicio): self
     {
+        
         $this->fecha_Inicio = $fecha_Inicio;
 
         return $this;
     }
 
-    public function getFechaFinalizacion(): ?\DateTimeInterface
+
+    public function getFechaFinalizacion(): ?\DateTimeInferface
     {
         return $this->fecha_Finalizacion;
     }

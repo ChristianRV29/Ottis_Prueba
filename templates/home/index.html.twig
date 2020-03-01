@@ -34,7 +34,7 @@
         <!-- Slide Three - Set the background image for this slide in the line below -->
         <div class="carousel-item" style="background-image: url({{ asset('img/Home3.jpg') }})">
           <div class="carousel-caption d-none d-md-block">
-            <h3>Proposito</h3>
+            <h3>Propósito</h3>
             <p>Ingresar a la empresa OTTIS</p>
           </div>
         </div>
@@ -49,5 +49,23 @@
       </a>
     </div>
   </header>
-
+  <div class="container">
+    <h2 class="my-4">Nuestros mejores proyectos</h2>
+    <div class="row">
+      {% for proyecto in proyectos %}
+      <div class="col-lg-4 col-sm-6 portfolio-item">
+         <div class="card h-100">
+            <a href="{{path('proyecto',{'id':proyecto.id})}}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.nombre}}</a>
+              </h4>
+              <p class="card-text">{{proyecto.descripcion}}</p>
+            </div>
+          </div>
+       </div>
+      {% endfor %}
+    </div>
+  </div> 
+</div>
 {% endblock %}
