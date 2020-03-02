@@ -27,7 +27,7 @@ class Actividad
     private $descripcion;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Proyecto",inverserdBy="actividades")
+     * @ORM\ManyToOne(targetEntity="Proyecto",inversedBy="actividades")
      * 
      */
     private $id_Proyecto;
