@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProyectoRepository")
  */
@@ -51,7 +52,10 @@ class Proyecto
      */
     private $actividades;
 
-    
+    public function __construct(){
+
+        //$this->$actividades = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {

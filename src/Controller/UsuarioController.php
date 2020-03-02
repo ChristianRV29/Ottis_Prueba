@@ -22,7 +22,11 @@ use Symfony\Component\HttpFoundation\Request;
 
  class UsuarioController extends Controller{
 
-    public function nuevoUsuarioAction(){
+    /** 
+     * @Route("/nuevoUsuario", name="nuevoUsuario")
+     */
+
+    public function nuevoUsuarioAction(Request $request){
 
         $usuario = new Usuario();
         
@@ -40,11 +44,10 @@ use Symfony\Component\HttpFoundation\Request;
                 $entityManager->flush();
 
 
-                return $this->redirectToRoute('usuario',array('id'=> $usuario->getId()));
+                return $this->redirectToRoute('usuario', array('id'=> $usuario->getId()));
 
             }
-
-            return $this->render('GestionUsuarios/nuevoUsuario.html.twig',array('form' => $form->createView()));
         }
+        return $this->render('GestionUsuarios/nuevoUsuario.html.twig', array('form' => $form->createView()));
     }
  }

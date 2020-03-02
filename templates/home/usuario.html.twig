@@ -1,34 +1,40 @@
 {% extends 'base.html.twig' %}
-{% block titulo %}Descripción del proyecto{% endblock%}
+{% block titulo %}Descripción del usuario{% endblock%}
 {% block contenido %}
 <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Descripción detallada del proyecto
+    <h1 class="mt-4 mb-3">Descripción detallada del usuario
       <small>Admin</small>
     </h1>
 
     <!-- Portfolio Item Row -->
     <div class="row">
-
-      <div class="col-md-8">
-        <img class="img-fluid" src="{{asset(proyectoImg~proyecto.imagen)}}" alt="">
-      </div>
-
       <div class="col-md-4">
-        <h3 class="my-3">{{proyecto.nombre}}</h3>
-        <p> {{proyecto.descripcion}} </p>
-        <h3 class="my-3">Detalles del proyecto</h3>
+        <h3 class="my-3">Detalles del usuario</h3>
         <ul>
-          <li>Fecha de inicio: {{ proyecto.fechaInicio | date('Y-m-d')}}</li>
-          <li>Fecha estimada de cierre: {{ proyecto.fechaFinalizacion | date('Y-m-d')}}</li>
-          <h5 class="my-3">Integrantes</h5>
-          <li>Pepito perez</li>
+        <li>Nombre: {{(usuario.nombre)}}</li>
+        <li>Apellido: {{(usuario.apellido)}}</li>
+          <li>Correo electrónico: {{(usuario.correo)}}</li>
+          <li>Sexo del usuario: {% if usuario.sexo=='F' %}
+              Mujer
+              {% else %}
+                Hombre
+
+                {% endif %}
+
+          </li>
+          <li>Rol: {% if usuario.rol == 1 %}
+              Administrador
+              {% elseif usuario.rol == 2 %}
+              Usuario general
+              {% else %}
+              Auditor
+              {% endif %}
+                </li>
         </ul>
       </div>
-
     </div>
-    <!-- /.row -->
 
     <!-- Related Projects Row -->
     <h3 class="my-4">Proyectos relacionados</h3>

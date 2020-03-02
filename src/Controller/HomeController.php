@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Proyecto;
+use App\Entity\Usuario;
 
 class HomeController extends Controller
 {
@@ -17,9 +18,11 @@ class HomeController extends Controller
     {
 
 
-        return $this->render('base.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
+        $proyectoRepository = $this->getDoctrine()->getRepository(Proyecto::class);
+        
+        $proyectos = $proyectoRepository->findByTop(true);
+        
+        return $this->render('home/index.html.twig',array('proyectos' => $proyectos));
         
     }
 
@@ -81,6 +84,42 @@ class HomeController extends Controller
         }
     }
 
+    /**
+     *  @Route("/usuarios", name="usuarios")
+     */
+    public function usuariosAction()
+    {
+
+        $usuarioRepository = $this->getDoctrine()->getRepository(Usuario::class);
+        $usuarios = $usuarioRepository->findAll();
+
+        return $this->render('home/usuarios.html.twig', 
+        array('usuarios'=>$usuarios));
+    
+    }
+
+    /**
+     *  @Route("/usuario/{id}", name="usuario")
+     */
+
+    public function usuarioFunction($id = null)
+    {
+
+        if($id != null){
+
+            $usuarioRepository = $this->getDoctrine()->getRepository(Usuario::class);
+            $usuario = $usuarioRepository->find($id);
+
+            return $this->render('home/usuario.html.twig', 
+            array("usuario"=>$usuario));
+
+        }
+
+        else {
+
+            return $this->redirectToRoute('home');
+        }
+    }
     /**
      *  @Route("/actividades/{actividad}", name="actividades")
      */

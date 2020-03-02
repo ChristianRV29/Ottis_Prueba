@@ -1,10 +1,9 @@
-
 {#Plantilla de nuestra app#}
 
 {% extends 'base.html.twig' %}
 
 {# TITULO #}
-{% block titulo%}Proyectos{% endblock %}
+{% block titulo%}Todos los usuarios{% endblock %}
 
 {#CONTENIDO#}
 {% block contenido %}
@@ -13,7 +12,7 @@
 <div class="container">
 
     <!-- Cabezero de la pagina-->
-    <h1 class="mt-4 mb-3">Todos los proyectos
+    <h1 class="mt-4 mb-3">Todos los usuarios
       <small>Admin</small>
     </h1>
     
@@ -21,15 +20,23 @@
       <!-- Imagen del cabecero -->
     <img class="img-fluid rounded mb-4" src="{{asset('img/projects.jpg')}}" alt="">
     <div class="row">
-      {% for proyecto in proyectos %}
+      {% for usuario in usuarios %}
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h4 class="card-header">{{proyecto.nombre}}</h4>
+          <h4 class="card-header">{{(usuario.nombre)}}
+            <br>{{(usuario.apellido)}}
+          </h4>
           <div class="card-body">
-            <p class="card-text">{{proyecto.descripcion}}</p>
+            <p class="card-text">Rol: {% if usuario.rol == 1 %}
+                Administrador
+                {% elseif usuario.rol == 2 %}
+                Usuario general
+                {% else %}
+                Auditor
+                {% endif %}</p>
           </div>
           <div class="card-footer">
-            <a href="{{path('proyecto',{'id':proyecto.id})}}" class="btn btn-primary"> Ver detalles</a>
+            <a href="{{path('usuario',{'id':usuario.id})}}" class="btn btn-primary"> Ver detalles</a>
           </div>
         </div>
       </div>

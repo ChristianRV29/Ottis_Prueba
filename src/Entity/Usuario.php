@@ -55,7 +55,8 @@ class Usuario implements UserInterface, \Serializable
 
     public function __construct(){
 
-        $this->$actividades = new ArrayCollection();
+        //$this->$actividades = new ArrayCollection();
+    
     }
 
     public function getId(): ?int
@@ -134,6 +135,25 @@ class Usuario implements UserInterface, \Serializable
 
         return $this;
     }
+
+    public function getSalt(){
+
+        return null;
+
+    }
+
+    public function getUsername(){
+
+        return null;
+    }
+
+    public function eraseCredentials(){
+
+        
+    }
+
+    
+
 
     public function getRoles(){
 
