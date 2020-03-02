@@ -46,6 +46,13 @@ class Proyecto
      */
     private $imagen;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Actividad",mappedBy="proyecto")
+     */
+    private $actividades;
+
+    
+
     public function getId(): ?int
     {
         return $this->id;
@@ -96,7 +103,7 @@ class Proyecto
         return $this->fecha_Finalizacion;
     }
 
-    public function setFechaFinalizacion(\DateTimeInterface $fecha_Inicio): self
+    public function setFechaFinalizacion(\DateTimeInterface $fecha_Finalizacion): self
     {
         
         $this->fecha_Finalizacion = $fecha_Finalizacion;

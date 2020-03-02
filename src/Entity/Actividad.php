@@ -27,12 +27,14 @@ class Actividad
     private $descripcion;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="Proyecto",inverserdBy="actividades")
+     * 
      */
     private $id_Proyecto;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="Usuario",inversedBy="actividades ")
+     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      */
     private $id_Usuario;
 

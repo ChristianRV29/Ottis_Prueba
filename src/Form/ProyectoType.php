@@ -13,6 +13,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 
 
@@ -22,9 +25,10 @@ class ProyectoType extends AbstractType{
 
         $builder 
         -> add('nombre', TextType::class, array('label'=> 'Nombre del proyecto:'))
-        -> add('descripcion', TextareaType::class, array('label'=> 'Descripción del proyecto: '))
+        -> add('descripcion', CKEditorType::class, array('label'=> 'Descripción del proyecto: '))
         -> add('fecha_Inicio', DateTimeType::class , array('label'=> 'Fecha y hora de inicio:'))
         -> add('fecha_Finalizacion', DateTimeType::class , array('label'=> 'Fecha aproximada de cierre:'))
+        //-> add('imagen', FileType::class, array('attr'=>array('onchange'=> 'onChange(event)')))
         -> add('guardar',SubmitType::class, array('label' => 'Crear proyecto'));
     }
 }

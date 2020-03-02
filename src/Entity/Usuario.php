@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsuarioRepository")
@@ -45,6 +46,16 @@ class Usuario
      * @ORM\Column(type="integer")
      */
     private $rol;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Actividad",mappedBy="proyecto")
+     */
+    private $actividades;
+
+    public function __construct(){
+
+        $this->$actividades = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {

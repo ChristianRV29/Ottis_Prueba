@@ -5,6 +5,9 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
 
+    proyectoImg_directory: '%kernel.project_dir%/public/img/proyectoImg'
+    
+
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -25,3 +28,8 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+twig:
+        debug: '%kernel.debug%'
+        strict_variables: '%kernel.debug%'
+        globals:
+                proyectoImg: '/img/proyectoImg'

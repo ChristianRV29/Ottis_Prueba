@@ -1,11 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block titulo %}Nuevo proyecto{% endblock%}
+{% block titulo %} Nuevo proyecto {% endblock%}
 
 {% block contenido %}
+<div class="container">
+<h1 class="mt-4 mb-3">Nuevo proyecto</h1>
+    <div class="row">
+        <div class="col-md-12">
 
-{{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_end(form) }}
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
 
+        <div class="control-group form-group">
+            {{form_label(form.nombre)}}
+            {{form_errors(form.nombre)}}
+            {{form_widget(form.nombre)}}
+        </div>
+        <div class="control-group form-group">
+            {{form_label(form.descripcion)}}
+            {{form_errors(form.descripcion)}}
+            {{form_widget(form.descripcion)}}
+        </div>
+        <div class="control-group form-group">
+            {{form_label(form.fecha_Inicio)}}
+            {{form_errors(form.fecha_Inicio)}}
+            {{form_widget(form.fecha_Inicio)}}
+        </div>
+        <div class="control-group form-group">
+            {{form_label(form.fecha_Finalizacion)}}
+            {{form_errors(form.fecha_Finalizacion)}}
+            {{form_widget(form.fecha_Finalizacion)}}
+        </div>
+        <div>
+            {{form_widget(form.guardar)}}
+        </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
 {% endblock%}
+{% block javascripts %}
+<script type="text/javascript" src="{{asset('js/nuevaImgProyecto.js')}}"></script>
+{% endblock %}
