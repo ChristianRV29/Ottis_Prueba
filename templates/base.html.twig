@@ -24,11 +24,23 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{{path('proyectos')}}">Proyectos</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="{{path('proyectos')}}" id="navbarDropdownPortfolio" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Proyectos
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="{{path('nuevoProyecto')}}">Crear proyecto</a>
+              <a class="dropdown-item" href="{{path('proyectos')}}">Ver proyectos</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{path('usuarios')}}">Usuarios</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="{{path('usuarios')}}" id="navbarDropdownPortfolio" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Usuarios
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="{{path('nuevoUsuario')}}">Crear usuario</a>
+              <a class="dropdown-item" href="{{path('usuarios')}}">Ver usuarios</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="{{path('actividades')}}" id="navbarDropdownPortfolio" data-toggle="dropdown"
